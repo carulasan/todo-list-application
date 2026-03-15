@@ -58,7 +58,7 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    # command: npm run dev -- --host 0.0.0.0  # expose to host machine
+    command: npm run dev -- --host 0.0.0.0  # expose to host machine
     restart: always
     environment:
       - CHOKIDAR_USEPOLLING=true  # ensures hot-reload works on Docker volumes
