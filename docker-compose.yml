@@ -1,0 +1,64 @@
+version: '3.7'
+
+services:
+  # POSTGRES
+  geoplan-todo-database:
+    container_name: geoplan-todo-database
+    image: postgres:11.0-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: todo
+    networks:
+      - geoplan-todo
+    restart: always
+    ports:
+      - 5432:5432
+
+  # API
+  geoplan-todo-api-service:
+    container_name: geoplan-todo-api-service
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8004:8000
+    networks:
+      - geoplan-todo
+    restart: always
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/.env
+
+  # REDIS
+  geoplan-todo-cache:
+    container_name: geoplan-todo-cache
+    image: redis:4.0.10
+    restart: always
+    networks:
+      - geoplan-todo
+    ports:
+      - 6379:6379
+
+  # VUE FRONTEND (Vite dev server)
+  geoplan-todo-frontend:
+    container_name: geoplan-todo-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000  # Vite default dev server port
+    networks:
+      - geoplan-todo
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev -- --host 0.0.0.0  # expose to host machine
+    restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # ensures hot-reload works on Docker volumes
+
+networks:
+  geoplan-todo:
+    name: geoplan-todo
