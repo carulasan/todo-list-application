@@ -6,10 +6,10 @@ from pydantic import BaseModel
 class SystemSettings(BaseModel):
     """Initial System Settings loaded from ENV."""
 
-    ENV: str = "Development"
+    ENV: str = "development"
     DEBUG_MODE: Optional[str] = "false"
     ALLOWED_HOST: str = "*"
-    CONFIG_NAME: str = "Geoplan-API-Final"
+    CONFIG_NAME: str = "Geoplan-API"
 
 
     class Config:
@@ -24,14 +24,14 @@ class DatabaseClientSettings(BaseModel):
 
     # @TODO: TEMPORARY DIRECT ASSIGNMENT FOR DEMO PURPOSE ONLY - BRYLLE
     # ENVIRONMENT VARIABLES MUST BE STORE IN SECRECTS
-    REDIS_HOST: Optional[str] = "default:gQAAAAAAARqdAAIncDJkZWQxMWQ2OTA3ZWE0YThlOGRmZjU2ODNkNzg3Njg4ZXAyNzIzNDk@complete-sculpin-72349.upstash.io"
+    REDIS_HOST: Optional[str] = ""
     REDIS_PORT: Optional[str] = '6379'
     REDIS_DB: Optional[str] = '0'
     DATABASE_ENGINE_POOL_SIZE: Optional[int] = 10
     DATABASE_ENGINE_MAX_OVERFLOW: Optional[int] = 10
     DATABASE_ENGINE_POOL_PING: Optional[int] = 0
-    READ_DATABASE_URL: Optional[str] = "postgresql://todo_ee1b_user:umPdgcgkWqMEZYO82PbCQ6YhNXvwgcRU@dpg-d6rblfvgi27c73agjk3g-a.oregon-postgres.render.com:5432/todo_ee1b"
-    WRITE_DATABASE_URL: Optional[str] = "postgresql://todo_ee1b_user:umPdgcgkWqMEZYO82PbCQ6YhNXvwgcRU@dpg-d6rblfvgi27c73agjk3g-a.oregon-postgres.render.com:5432/todo_ee1b"
+    READ_DATABASE_URL: Optional[str] = ""
+    WRITE_DATABASE_URL: Optional[str] = ""
     ENABLE_DB_LOGGING: Optional[str] = "false"
 
     @property
