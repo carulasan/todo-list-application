@@ -1,11 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, APIRouter
 from fastapi.responses import JSONResponse
 
 from settings import system_settings
 
-app = FastAPI()
+router = APIRouter()
 
-@app.get("/health")
+
+@router.get("/health")
 async def health_check():
     """
     Health check endpoint.
