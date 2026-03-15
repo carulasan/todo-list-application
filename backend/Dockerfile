@@ -5,4 +5,5 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["sh", "-c", "uvicorn main:app --reload --host 0.0.0.0 --port 8000"]
+# Run prestart script before the app starts
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
