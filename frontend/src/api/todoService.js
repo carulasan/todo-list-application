@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'http://localhost:8004/api'
+// @TODO: TEMPORARY DIRECT ASSIGNMENT FOR DEMO PURPOSE ONLY - BRYLLE 
+// ENVIRONMENT VARIABLES MUST BE STORE IN SECRECTS
+const API_BASE_URL = 'https://todo-list-application-backend-4tyo.onrender.com/api'
 
 const todoService = {
   // Get all todos

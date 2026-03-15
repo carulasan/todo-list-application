@@ -22,6 +22,8 @@ class SystemSettings(BaseModel):
 class DatabaseClientSettings(BaseModel):
     """Database related settings whether from PostgreSql, Redis, etc.."""
 
+    # @TODO: TEMPORARY DIRECT ASSIGNMENT FOR DEMO PURPOSE ONLY - BRYLLE
+    # ENVIRONMENT VARIABLES MUST BE STORE IN SECRECTS
     REDIS_HOST: Optional[str] = "default:gQAAAAAAARqdAAIncDJkZWQxMWQ2OTA3ZWE0YThlOGRmZjU2ODNkNzg3Njg4ZXAyNzIzNDk@complete-sculpin-72349.upstash.io"
     REDIS_PORT: Optional[str] = '6379'
     REDIS_DB: Optional[str] = '0'
