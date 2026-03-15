@@ -51,6 +51,13 @@
             >
               Priority: {{ todo.priority }}
             </span>
+            <span
+              v-if="todo.status"
+              class="todo-priority"
+              :class="`status-${todo.status}`"
+            >
+               {{ todo.status }}
+            </span>
           </div>
           <p v-if="todo.description" class="todo-description">
             {{ todo.description }}
@@ -368,5 +375,22 @@ export default {
 .btn-delete:hover {
   background: #e74c3c;
   transform: scale(1.1);
+}
+
+.status-pending {
+  background: #d5f4e6;
+  color: grey;
+}
+.status-in_progress {
+  background: #d5f4e6;
+  color: blueviolet;
+}
+.status-blocked {
+  background: #d5f4e6;
+  color: red;
+}
+.status-completed {
+  background: #d5f4e6;
+  color: green;
 }
 </style>
