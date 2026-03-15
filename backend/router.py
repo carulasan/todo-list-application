@@ -1,4 +1,4 @@
-from api.routers import todo
+from api.routers import common, todo
 
 
 ROOT_PREFIX = "/api"
@@ -6,6 +6,12 @@ ROOT_PREFIX = "/api"
 
 def configure_todo_routes(app):
     """Configures Todo List Public Routes."""
+
+    app.include_router(
+        common.router,
+        prefix=f"{ROOT_PREFIX}",
+        tags=["Health"],
+    )
 
     app.include_router(
         todo.router,
